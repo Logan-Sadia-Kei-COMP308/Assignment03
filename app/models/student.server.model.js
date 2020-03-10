@@ -12,6 +12,7 @@ var StudentSchema = new Schema({
   address: String,
   city: String,
   program: String,
+  phoneNumber: String,
   email: {
     type: String,
     // Validate the email format
@@ -33,6 +34,10 @@ var StudentSchema = new Schema({
       password => password && password.length > 6,
       "Password should be longer than 6 letters"
     ]
+  },
+  courses: {
+    type: Schema.ObjectId,
+    ref: "Course"
   }
 });
 

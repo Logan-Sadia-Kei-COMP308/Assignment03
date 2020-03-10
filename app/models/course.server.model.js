@@ -19,9 +19,6 @@ const CourseSchema = new Schema({
     trim: true,
     required: "Section cannot be blank"
   },
-  selector: {
-    type: Schema.ObjectId,
-    ref: "Student"
-  }
+  semester: String
 });
 mongoose.model("Course", CourseSchema);

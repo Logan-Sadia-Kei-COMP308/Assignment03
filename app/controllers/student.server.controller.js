@@ -47,7 +47,7 @@ exports.create = function(req, res, next) {
       return next(err);
     } else {
       // Use the 'response' object to send a JSON response
-      res.json(user);
+      res.json(student);
     }
   });
 };
