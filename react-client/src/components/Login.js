@@ -62,8 +62,8 @@ function App() {
   //
   return (
     <div className="App">
-      {screen === "auth" ? (
-        <div class="container">
+      {screen === "auth" 
+      ? <div class="container">
           <div class="span-12 ">
             <div class="form-group">
               <label>Student Id: </label>
@@ -89,10 +89,10 @@ function App() {
             </div>
           </div>
         </div>
-      ) : (
-        <View screen={screen} setScreen={setScreen} />
-      )}
-    </div>
+      
+      : <View screen={screen} setScreen={setScreen} />
+        }
+    </div> 
   );
 }
 

@@ -12,6 +12,7 @@ function CreateStudent(props) {
     studentId: "",
     firstName: "",
     lastName: "",
+    phoneNumber: "",
     email: "",
     password: "",
     program: "",
@@ -28,6 +29,7 @@ function CreateStudent(props) {
       studentId: student.studentId,
       firstName: student.firstName,
       lastName: student.lastName,
+      phoneNumber: student.phoneNumber,
       email: student.email,
       password: student.password,
       program: student.program,
@@ -88,6 +90,17 @@ function CreateStudent(props) {
                 id="lastName"
                 placeholder="Enter last name"
                 value={student.lastName}
+                onChange={onChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Phone number</Form.Label>
+              <Form.Control
+                type="text"
+                name="phoneNumber"
+                id="phoneNumber"
+                placeholder="Enter phone number"
+                value={student.phoneNumber}
                 onChange={onChange}
               />
             </Form.Group>

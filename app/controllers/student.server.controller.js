@@ -38,7 +38,7 @@ const getErrorMessage = function(err) {
 exports.create = function(req, res, next) {
   // Create a new instance of the 'User' Mongoose model
   var student = new Student(req.body); //get data from React form
-  console.log("body: " + req.body.username);
+  console.log("body: " + req.body.stuentId);
 
   // Use the 'User' instance's 'save' method to save a new user document
   student.save(function(err) {
@@ -114,12 +114,12 @@ exports.delete = function(req, res, next) {
 exports.authenticate = function(req, res, next) {
   // Get credentials from request
   console.log(req.body);
-  const username = req.body.auth.username;
+  const studentId = req.body.auth.studentId;
   const password = req.body.auth.password;
   console.log(password);
-  console.log(username);
+  console.log(studentId);
   //find the user with given username using static method findOne
-  Student.findOne({ username: username }, (err, student) => {
+  Student.findOne({ studentId: studentId }, (err, student) => {
     if (err) {
       return next(err);
     } else {
@@ -128,7 +128,7 @@ exports.authenticate = function(req, res, next) {
       if (bcrypt.compareSync(password, student.password)) {
         // Create a new token with the user id in the payload
         // and which expires 300 seconds after issue
-        const token = jwt.sign({ username: student.studentNumber }, jwtKey, {
+        const token = jwt.sign({ studentId: student.studentId }, jwtKey, {
           algorithm: "HS256",
           expiresIn: jwtExpirySeconds
         });
@@ -139,7 +139,7 @@ exports.authenticate = function(req, res, next) {
           maxAge: jwtExpirySeconds * 1000,
           httpOnly: true
         });
-        res.status(200).send({ screen: student.studentNumber });
+        res.status(200).send({ screen: student.studentId });
         //
         //res.json({status:"success", message: "user found!!!", data:{user:
         //user, token:token}});
@@ -150,7 +150,7 @@ exports.authenticate = function(req, res, next) {
       } else {
         res.json({
           status: "error",
-          message: "Invalid student Number/password!!!",
+          message: "Invalid Student Id/password!!!",
           data: null
         });
       }
@@ -187,7 +187,7 @@ exports.welcome = (req, res) => {
 
   // Finally, return the welcome message to the user, along with their
   // username given in the token
-  res.send(`Welcome Student with student number: ${payload.stdudentNumber}!`);
+  res.send(`Welcome Student with student number: ${payload.studentId}!`);
 };
 //
 //sign out function in controller
@@ -225,7 +225,7 @@ exports.isSignedIn = (req, res) => {
   }
 
   // Finally, token is ok, return the username given in the token
-  res.status(200).send({ screen: payload.studentNumber });
+  res.status(200).send({ screen: payload.studentId });
 };
 
 //isAuthenticated() method to check whether a user is currently authenticated

@@ -5,15 +5,18 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
 
-function ShowStudent(props) {
+function ShowCourse(props) {
+  console.log("props.match.params", props.match.params.id);
   const [data, setData] = useState({});
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "http://localhost:3000/students/" + props.match.params.id;
+  const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
 
   useEffect(() => {
     setShowLoading(false);
     const fetchData = async () => {
       const result = await axios(apiUrl);
+      console.log("results from courses", result.data);
+
       setData(result.data);
       setShowLoading(false);
     };
@@ -21,30 +24,26 @@ function ShowStudent(props) {
     fetchData();
   }, []);
 
-  const editStudent = id => {
+  const editCourse = id => {
     props.history.push({
-      pathname: "/edit/" + id
+      pathname: "/editcourse/" + id
     });
   };
 
-  const deleteStudent = id => {
+  const deleteCourse = id => {
     setShowLoading(true);
-    const student = {
-      studentId: data.studentId,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: data.password,
-      program: data.program,
-      address: data.address,
-      city: data.city
+    const course = {
+      courseCode: data.courseCode,
+      courseName: data.courseName,
+      section: data.section,
+      semester: data.semester
     };
-
+    //
     axios
-      .delete(apiUrl, student)
+      .delete(apiUrl, course)
       .then(result => {
         setShowLoading(false);
-        props.history.push("/list");
+        props.history.push("/listcourses");
       })
       .catch(error => setShowLoading(false));
   };
@@ -57,29 +56,17 @@ function ShowStudent(props) {
         </Spinner>
       )}
       <Jumbotron>
-        <h1>
-          Name: {data.firstName}, {data.lastName}
-        </h1>
-        <p>Email: {data.email}</p>
-        <p>Student Id: {data.studentId}</p>
-        <h3>
-          Course Taken by {data.firstName} {data.lastName}
-        </h3>
-        <table>
-          <tr>
-            <th>Course Code</th>
-            <th>Course Name</th>
-            <th>Section</th>
-            <th>Semester</th>
-          </tr>
-        </table>
+        <h1>Course Code: {data.courseCode}</h1>
+        <p>Course Name: {data.courseName}</p>
+        <p>Section: {data.section}</p>
+        <p>Semester: {data.semester}</p>
 
         <p>
           <Button
             type="button"
             variant="primary"
             onClick={() => {
-              editStudent(data._id);
+              editCourse(data._id);
             }}
           >
             Edit
@@ -89,7 +76,7 @@ function ShowStudent(props) {
             type="button"
             variant="danger"
             onClick={() => {
-              deleteStudent(data._id);
+              deleteCourse(data._id);
             }}
           >
             Delete
@@ -100,4 +87,4 @@ function ShowStudent(props) {
   );
 }
 
-export default withRouter(ShowStudent);
+export default withRouter(ShowCourse);
