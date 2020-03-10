@@ -17,13 +17,13 @@ var StudentSchema = new Schema({
     // Validate the email format
     match: [/.+\@.+\..+/, "Please fill a valid email address"]
   },
-  studentNumber: {
+  studentId: {
     type: String,
-    // Set a unique 'username' index
+    // Set a unique 'student Id' index
     unique: true,
-    // Validate 'username' value existance
-    required: "Student number  is required",
-    // Trim the 'username' field
+    // Validate 'student Id' value existance
+    required: "Student Id is required",
+    // Trim the 'student Id' field
     trim: true
   },
   password: {
