@@ -44,10 +44,10 @@ function App() {
         <Route render={() => <List />} path="/list" />
         <Route render={() => <ListCourses />} path="/listcourses" />
         <Route render={() => <EditStudent />} path="/edit/:id" />
+        <Route render={() => <EditCourse />} path="/editCourse/:id" />
         <Route render={() => <CreateStudent />} path="/create" />
         <Route render={() => <ShowStudent />} path="/show/:id" />
         <Route render={() => <ShowCourse />} path="/showcourse/:id" />
-        <Route render={() => <EditCourse />} path="/editcourse/:id" />
       </div>
     </Router>
   );

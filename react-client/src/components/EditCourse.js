@@ -7,13 +7,13 @@ import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
 
 function EditCourse(props) {
-  console.log("editstudent props:", props.match.params);
   const [course, setCourse] = useState({
     _id: "",
     courseCode: "",
     courseName: "",
     section: "",
-    semester: ""
+    semester: "",
+    creator: ""
   });
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
@@ -40,13 +40,11 @@ function EditCourse(props) {
       section: course.section,
       semester: course.semester
     };
-    console.log("before calling put to update", data);
     axios
       .put(apiUrl, data)
       .then(result => {
-        console.log("after calling put to update", result.data);
         setShowLoading(false);
-        props.history.push("/showcourse/" + result.data._id);
+        props.history.push("/showCourse/" + result.data._id);
       })
       .catch(error => setShowLoading(false));
   };
@@ -66,7 +64,7 @@ function EditCourse(props) {
       <Jumbotron>
         <Form onSubmit={updateCourse}>
           <Form.Group>
-            <Form.Label> Course Code</Form.Label>
+            <Form.Label>Course Code</Form.Label>
             <Form.Control
               type="text"
               name="courseCode"
@@ -77,7 +75,7 @@ function EditCourse(props) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label> Course Name</Form.Label>
+            <Form.Label>Course Name</Form.Label>
             <Form.Control
               type="text"
               name="courseName"
@@ -88,7 +86,7 @@ function EditCourse(props) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label> Section</Form.Label>
+            <Form.Label>Section</Form.Label>
             <Form.Control
               type="text"
               name="section"
@@ -99,7 +97,7 @@ function EditCourse(props) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label> Semester</Form.Label>
+            <Form.Label>Semester</Form.Label>
             <Form.Control
               type="text"
               name="semester"
@@ -111,7 +109,7 @@ function EditCourse(props) {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            Update Course
+            Update
           </Button>
         </Form>
       </Jumbotron>
