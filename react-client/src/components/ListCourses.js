@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 function ListCourses(props) {
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "http://localhost:3000/courses";
+  const apiUrl = "http://localhost:3000/api/courses";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +21,7 @@ function ListCourses(props) {
 
   const showDetail = id => {
     props.history.push({
-      pathname: "/show/" + id
+      pathname: "/showCourse/" + id
     });
   };
 

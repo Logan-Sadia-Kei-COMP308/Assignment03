@@ -33,6 +33,7 @@ function App() {
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/list">List of Students</Nav.Link>
+            <Nav.Link href="/listcourses">List of Courses</Nav.Link>
             <Nav.Link href="/create">Sign Up</Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -41,15 +41,15 @@ function View(props) {
     setCourse("y");
   };
   //
-  const listCourses = async () => {
-    try {
-      const res = await axios.get("/courses");
-      console.log(res.data);
-      setCourses(res.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const listCourses = async () => {
+  //   try {
+  //     const res = await axios.get("/courses");
+  //     console.log(res.data);
+  //     setCourses(res.data);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   //
   return (
     <div className="App">
@@ -59,7 +59,7 @@ function View(props) {
           <p>{data}</p>
           <button onClick={getData}>Get Data</button>
           <button onClick={createCourse}>Create Course</button>
-          <button onClick={listCourses}>Course list</button>
+          {/* <button onClick={listCourses}>Course list</button> */}
           <button onClick={deleteCookie}>Log out</button>
         </div>
       ) : (
