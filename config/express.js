@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 // Create a new Express application instance
-module.exports = function() {
+module.exports = function () {
   //Create the Express application object
   var app = express();
   //the process.env property allows you to access predefined environment variables
@@ -31,7 +31,7 @@ module.exports = function() {
   );
   app.use(bodyParser.json()); //use middleware that only parses json
   app.use(cookieParser());
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
       "Access-Control-Allow-Headers",
@@ -65,7 +65,7 @@ module.exports = function() {
   // Load the routing files
   require("../app/routes/index.server.routes.js")(app);
   require("../app/routes/student.server.routes.js")(app);
-  // require("../app/routes/course.server.routes.js")(app);
+  require("../app/routes/course.server.routes.js")(app);
   //The express.static() middleware takes one argument
   //to determine the location of the static folder
   //Configure static file serving
