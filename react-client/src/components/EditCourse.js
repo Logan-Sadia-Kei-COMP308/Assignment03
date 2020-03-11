@@ -35,10 +35,10 @@ function EditCourse(props) {
     setShowLoading(true);
     e.preventDefault();
     const data = {
-        courseCode: course.courseCode,
-        courseName: course.courseName,
-        section: course.section,
-        semester: course.semester
+      courseCode: course.courseCode,
+      courseName: course.courseName,
+      section: course.section,
+      semester: course.semester
     };
     axios
       .put(apiUrl, data)

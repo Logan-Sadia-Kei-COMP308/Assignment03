@@ -1,7 +1,7 @@
 const students = require("../../app/controllers/student.server.controller");
 const courses = require("../../app/controllers/course.server.controller");
 //
-module.exports = function(app) {
+module.exports = function (app) {
   app
     .route("/api/courses")
     .get(courses.list)
@@ -10,9 +10,8 @@ module.exports = function(app) {
   app
     .route("/api/courses/:courseId")
     .get(courses.read)
-    .put(students.requiresLogin, courses.hasAuthorization, courses.update)
-    .delete(students.requiresLogin, courses.hasAuthorization, courses.delete);
-  //
+    .put(courses.update)
+    .delete(courses.delete);
+
   app.param("courseId", courses.courseByID);
-  app.param("courseId", courses.update);
 };

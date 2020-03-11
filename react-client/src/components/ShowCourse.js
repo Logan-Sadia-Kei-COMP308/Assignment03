@@ -60,7 +60,24 @@ function ShowCourse(props) {
         <p>Course Name: {data.courseName}</p>
         <p>Section: {data.section}</p>
         <p>Semester: {data.semester}</p>
-
+        <div class="col-6 center">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Student Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>300111111</td>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john_doe@gmail.com</td>
+            </tr>
+          </table>
+        </div>
         <p>
           <Button
             type="button"
