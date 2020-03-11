@@ -12,6 +12,7 @@ import Nav from "react-bootstrap/Nav";
 import "./App.css";
 //
 import List from "./components/List";
+import ListCourses from "./components/ListCourses";
 import EditStudent from "./components/EditStudent";
 import EditCourse from "./components/EditCourse";
 
@@ -41,6 +42,7 @@ function App() {
         <Route render={() => <Home />} path="/home" />
         <Route render={() => <Login />} path="/login" />
         <Route render={() => <List />} path="/list" />
+        <Route render={() => <ListCourses />} path="/listcourses" />
         <Route render={() => <EditStudent />} path="/edit/:id" />
         <Route render={() => <CreateStudent />} path="/create" />
         <Route render={() => <ShowStudent />} path="/show/:id" />

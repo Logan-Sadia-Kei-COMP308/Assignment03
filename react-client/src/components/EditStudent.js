@@ -128,17 +128,6 @@ function EditStudent(props) {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Enter student password"
-              value={student.password}
-              onChange={onChange}
-            />
-          </Form.Group>
-          <Form.Group>
             <Form.Label>Program</Form.Label>
             <Form.Control
               type="text"

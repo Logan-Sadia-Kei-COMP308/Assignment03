@@ -10,6 +10,8 @@ function View(props) {
   const [data, setData] = useState();
   //
   const [course, setCourse] = useState("");
+  //
+  const [courses, setCourses] = useState("");
   // called when user clicks on Logout button
   // to clear the cookie and set the screen state variable
   // back to its initial state.
@@ -38,7 +40,16 @@ function View(props) {
     console.log("in createCourse");
     setCourse("y");
   };
-
+  //
+  const listCourses = async () => {
+    try {
+      const res = await axios.get("/courses");
+      console.log(res.data);
+      setCourses(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   //
   return (
     <div className="App">
@@ -48,6 +59,7 @@ function View(props) {
           <p>{data}</p>
           <button onClick={getData}>Get Data</button>
           <button onClick={createCourse}>Create Course</button>
+          <button onClick={listCourses}>Course list</button>
           <button onClick={deleteCookie}>Log out</button>
         </div>
       ) : (

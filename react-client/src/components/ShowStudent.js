@@ -63,16 +63,26 @@ function ShowStudent(props) {
         <p>Email: {data.email}</p>
         <p>Student Id: {data.studentId}</p>
         <h3>
-          Course Taken by {data.firstName} {data.lastName}
+          Courses for {data.firstName} {data.lastName}
         </h3>
-        <table>
-          <tr>
-            <th>Course Code</th>
-            <th>Course Name</th>
-            <th>Section</th>
-            <th>Semester</th>
-          </tr>
-        </table>
+        <div class="col-6 center">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Section</th>
+                <th>Semester</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>COMP 123</td>
+              <td>Programming 2</td>
+              <td>001</td>
+              <td>2</td>
+            </tr>
+          </table>
+        </div>
 
         <p>
           <Button
