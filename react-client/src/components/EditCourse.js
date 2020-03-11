@@ -40,6 +40,7 @@ function EditCourse(props) {
       section: course.section,
       semester: course.semester
     };
+    console.log("before calling put to update", data);
     axios
       .put(apiUrl, data)
       .then(result => {
@@ -89,7 +90,7 @@ function EditCourse(props) {
           <Form.Group>
             <Form.Label> Section</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               name="section"
               id="section"
               placeholder="Enter section"
@@ -100,7 +101,7 @@ function EditCourse(props) {
           <Form.Group>
             <Form.Label> Semester</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               name="semester"
               id="semester"
               placeholder="Enter semester"
