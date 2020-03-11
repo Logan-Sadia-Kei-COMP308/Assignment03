@@ -79,21 +79,20 @@ exports.read = function(req, res) {
   res.status(200).json(req.course);
 };
 //
-exports.update = function(req, res) {
+exports.update = function(req, res, next, id) {
   console.log("in update:", req.course);
   const course = req.course;
   course.courseCode = req.body.courseCode;
   course.courseName = req.body.courseName;
   course.section = req.body.section;
   course.semester = req.body.semester;
-  course.save(err => {
+
+  Course.findByIdAndUpdate(id, course, function(err, course) {
     if (err) {
-      return res.status(400).send({
-        message: getErrorMessage(err)
-      });
-    } else {
-      res.status(200).json(course);
+      console.log(err);
+      return next(err);
     }
+    res.json(course);
   });
 };
 //
