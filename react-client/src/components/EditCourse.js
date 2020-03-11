@@ -16,7 +16,7 @@ function EditCourse(props) {
     creator: ""
   });
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "http://localhost:3000/courses/" + props.match.params.id;
+  const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
   //runs only once after the first render
   useEffect(() => {
     setShowLoading(false);
@@ -64,7 +64,7 @@ function EditCourse(props) {
       <Jumbotron>
         <Form onSubmit={updateCourse}>
           <Form.Group>
-            <Form.Label> Course Code</Form.Label>
+            <Form.Label>Course Code</Form.Label>
             <Form.Control
               type="text"
               name="courseCode"
