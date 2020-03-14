@@ -10,15 +10,29 @@ function ShowStudent(props) {
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/students/" + props.match.params.id;
 
+  const [courseData, setCourseData] = useState([]);
+  const [showCourseLoading, setShowCourseLoading] = useState(true);
+  const apiUrlCourse = "http://localhost:3000/api/courses";
+
+
+  // courselist
+
   useEffect(() => {
     setShowLoading(false);
+    setShowCourseLoading(false);
     const fetchData = async () => {
       const result = await axios(apiUrl);
       setData(result.data);
       setShowLoading(false);
+
+      const resultCourse = await axios(apiUrlCourse);
+      setCourseData(resultCourse.data);
+      setShowCourseLoading(false);
+
     };
 
     fetchData();
+
   }, []);
 
   const editStudent = id => {
@@ -62,28 +76,6 @@ function ShowStudent(props) {
         </h1>
         <p>Email: {data.email}</p>
         <p>Student Id: {data.studentId}</p>
-        <h3>
-          Courses for {data.firstName} {data.lastName}
-        </h3>
-        <div class="col-6 center">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>Course Code</th>
-                <th>Course Name</th>
-                <th>Section</th>
-                <th>Semester</th>
-              </tr>
-            </thead>
-            <tr>
-              <td>COMP 123</td>
-              <td>Programming 2</td>
-              <td>001</td>
-              <td>2</td>
-            </tr>
-          </table>
-        </div>
-
         <p>
           <Button
             type="button"
@@ -105,6 +97,34 @@ function ShowStudent(props) {
             Delete
           </Button>
         </p>
+
+        <h3>
+          Courses for {data.firstName} {data.lastName}
+        </h3>
+        <div class="col-6 center">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Section</th>
+                <th>Semester</th>
+              </tr>
+            </thead>
+            {courseData.map((course) => {
+              return (
+                <tr>
+                  <td>{course.courseCode}</td>
+                  <td>{course.courseName}</td>
+                  <td>{course.section}</td>
+                  <td>{course.semester}</td>
+                </tr>
+              )
+
+            })}
+          </table>
+        </div>
+
       </Jumbotron>
     </div>
   );
