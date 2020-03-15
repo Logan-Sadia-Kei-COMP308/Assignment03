@@ -62,8 +62,8 @@ function App() {
   }, []); //only the first render
   //
   return (
-    <div class="container">
-      <div class="span12 div-style">
+    <div class="container-fluid bg-yellow">
+      <div class="col-12 div-style">
         <div>
           <img
             src={Banner2}

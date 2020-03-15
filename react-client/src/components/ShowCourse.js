@@ -11,7 +11,7 @@ function ShowCourse(props) {
   const [data, setData] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
-
+  const apiUrlBase = "http://localhost:3000/api/courses";
   const [studentData, setStudentData] = useState([]);
   const [showStudentLoading, setShowStudentLoading] = useState(true);
   const apiUrlStudent = "http://localhost:3000/students";
@@ -40,6 +40,15 @@ function ShowCourse(props) {
     props.history.push({
       pathname: "/editCourse/" + id
     });
+  };
+  const listCourse = id => {
+    axios
+      .get(apiUrlBase)
+      .then(result => {
+        setShowLoading(false);
+        props.history.push("/login");
+      })
+      .catch(error => setShowLoading(false));
   };
 
   const deleteCourse = id => {
@@ -116,6 +125,16 @@ function ShowCourse(props) {
               }}
             >
               Delete
+            </Button>
+            &nbsp;
+            <Button
+              type="button"
+              variant="success"
+              onClick={() => {
+                listCourse();
+              }}
+            >
+              View All Courses
             </Button>
           </p>
           <h3>Students enrolled for {data.courseCode}</h3>

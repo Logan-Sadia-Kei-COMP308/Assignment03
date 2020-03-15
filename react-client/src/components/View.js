@@ -44,40 +44,36 @@ function View(props) {
     setCourse("y");
   };
   //
-  const listCourses = () => {
-    console.log("in courseList");
-    setCourses("x");
-  };
+  // const listCourses = () => {
+  //   console.log("in courseList");
+  //   setCourses("x");
+  // };
 
   return (
-    <div class="container">
-      <div class="span12 ">
+    <div class="container-fluid ">
+      <div class="col-12 ">
         {course !== "y" ? (
           <div className="App">
             <p>{screen}</p>
             <p>{data}</p>
-            <div
-              class="btn-group margin-bottom"
-              role="group"
-              aria-label="Basic example"
-            >
+            <div class="btn-group margin-bottom" role="group">
               <button onClick={getData} class="btn btn-secondary" type="button">
                 Get Data
               </button>
-              <button
+              {/* <button
                 onClick={createCourse}
                 class="btn btn-secondary"
                 type="button"
               >
                 Create Course
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 onClick={listCourses}
                 class="btn btn-secondary"
                 type="button"
               >
                 List Courses
-              </button>
+              </button> */}
               <button
                 onClick={deleteCookie}
                 class="btn btn-secondary"
@@ -90,6 +86,12 @@ function View(props) {
         ) : (
           <CreateCourse screen={screen} setScreen={setScreen} />
         )}
+      </div>
+      <div class="div-left">
+        <CreateCourse screen={screen} setScreen={setScreen} />
+      </div>
+      <div class="div-right">
+        {<ListCourses screen={screen} setScreen={setScreen} />}
       </div>
     </div>
   );

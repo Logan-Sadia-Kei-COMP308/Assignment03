@@ -27,34 +27,29 @@ function ListCourses(props) {
   };
 
   return (
-    <div class="container">
-      <div class="span12 div-style margin-bottom">
-        <div>
-          <img
-            src={Banner1}
-            alt="Centennial College Banner1"
-            class="img-style-1"
-          />
-        </div>
+    <div class="container-fluid">
+      <div class="col-12 div-style ">
         <h2 class="h2-style">List Of Courses</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
         )}
-        <ListGroup>
-          {data.map((item, idx) => (
-            <ListGroup.Item
-              key={idx}
-              action
-              onClick={() => {
-                showDetail(item._id);
-              }}
-            >
-              {"Course Code: " + item.courseCode}
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
+        <div class="paddings margin-bottom">
+          <ListGroup>
+            {data.map((item, idx) => (
+              <ListGroup.Item
+                key={idx}
+                action
+                onClick={() => {
+                  showDetail(item._id);
+                }}
+              >
+                {"Course Code: " + item.courseCode}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </div>
       </div>
     </div>
   );

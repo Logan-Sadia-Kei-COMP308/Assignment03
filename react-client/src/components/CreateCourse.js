@@ -51,10 +51,7 @@ function CreateCourse(props) {
   };
 
   return (
-    <div>
-      <div>
-        <img src={Banner} alt="Centennial College Banner" class="img-style" />
-      </div>
+    <div class="container-fluid col-12 div-right div-style">
       <h2 class="h2-style">
         Create a Course <small>{studentId}</small>
       </h2>
