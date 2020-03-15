@@ -64,7 +64,7 @@ function ShowCourse(props) {
       .delete(apiUrl, course)
       .then(result => {
         setShowLoading(false);
-        props.history.push("/listcourses");
+        props.history.push("/login");
       })
       .catch(error => setShowLoading(false));
   };
