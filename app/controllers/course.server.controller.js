@@ -15,10 +15,10 @@ function getErrorMessage(err) {
 //
 exports.create = function(req, res) {
   const course = new Course();
-  course.courseCode = req.body.courseCode;
-  course.courseName = req.body.courseName;
+  course.courseCode = req.body.courseCode.toUpperCase();
+  course.courseName = req.body.courseName.toUpperCase();
   course.section = req.body.section;
-  course.semester = req.body.semester;
+  course.semester = req.body.semester.toUpperCase();
   course.creator = req.body.studentId;
   console.log(req.body);
   //
@@ -83,10 +83,10 @@ exports.update = function(req, res, next) {
   console.log("in update:", req.course);
 
   const course = req.course;
-  course.courseCode = req.body.courseCode;
-  course.courseName = req.body.courseName;
+  course.courseCode = req.body.courseCode.toUpperCase();
+  course.courseName = req.body.courseName.toUpperCase();
   course.section = req.body.section;
-  course.semester = req.body.semester;
+  course.semester = req.body.semester.toUpperCase();
 
   Course.findByIdAndUpdate(course._id, course, function(err, course) {
     if (err) {
