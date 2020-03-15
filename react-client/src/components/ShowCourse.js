@@ -4,6 +4,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
+import Banner from "../banner.png";
 
 function ShowCourse(props) {
   console.log("props.match.params", props.match.params.id);

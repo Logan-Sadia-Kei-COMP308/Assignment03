@@ -5,6 +5,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
+import Banner from "../banner.png";
 
 function CreateStudent(props) {
   const [student, setStudent] = useState({
@@ -52,7 +53,11 @@ function CreateStudent(props) {
 
   return (
     <div class="container">
-      <div class="span12">
+      <div class="span12 div-style">
+        <div>
+          <img src={Banner} alt="Centennial College Banner" class="img-style" />
+        </div>
+        <h2 class="h2-style">Student Sign up</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
@@ -163,7 +168,7 @@ function CreateStudent(props) {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="outline-primary col-12" type="submit">
               Save
             </Button>
           </Form>

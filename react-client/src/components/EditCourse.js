@@ -5,6 +5,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
+import Banner from "../banner.png";
 
 function EditCourse(props) {
   const [course, setCourse] = useState({
@@ -55,64 +56,75 @@ function EditCourse(props) {
   };
 
   return (
-    <div>
-      {showLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
-      <Jumbotron>
-        <Form onSubmit={updateCourse}>
-          <Form.Group>
-            <Form.Label>Course Code</Form.Label>
-            <Form.Control
-              type="text"
-              name="courseCode"
-              id="courseCode"
-              placeholder="Enter course code"
-              value={course.courseCode}
-              onChange={onChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Course Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="courseName"
-              id="courseName"
-              placeholder="Enter course name"
-              value={course.courseName}
-              onChange={onChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Section</Form.Label>
-            <Form.Control
-              type="text"
-              name="section"
-              id="section"
-              placeholder="Enter section"
-              value={course.section}
-              onChange={onChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Semester</Form.Label>
-            <Form.Control
-              type="text"
-              name="semester"
-              id="semester"
-              placeholder="Enter semester"
-              value={course.semester}
-              onChange={onChange}
-            />
-          </Form.Group>
+    <div class="container-fluid">
+      <div class="span12 div-style">
+        <div>
+          <img src={Banner} alt="Centennial College Banner" class="img-style" />
+        </div>
 
-          <Button variant="primary" type="submit">
-            Update
-          </Button>
-        </Form>
-      </Jumbotron>
+        {showLoading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <Jumbotron>
+          <div class="container">
+            <div class="span-12 div-style">
+              <div class=""></div>
+              <Form onSubmit={updateCourse}>
+                <Form.Group>
+                  <Form.Label>Course Code</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="courseCode"
+                    id="courseCode"
+                    placeholder="Enter course code"
+                    value={course.courseCode}
+                    onChange={onChange}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Course Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="courseName"
+                    id="courseName"
+                    placeholder="Enter course name"
+                    value={course.courseName}
+                    onChange={onChange}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Section</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="section"
+                    id="section"
+                    placeholder="Enter section"
+                    value={course.section}
+                    onChange={onChange}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Semester</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="semester"
+                    id="semester"
+                    placeholder="Enter semester"
+                    value={course.semester}
+                    onChange={onChange}
+                  />
+                </Form.Group>
+
+                <Button variant="primary" type="submit">
+                  Update
+                </Button>
+              </Form>
+            </div>
+          </div>
+        </Jumbotron>
+      </div>
     </div>
   );
 }

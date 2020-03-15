@@ -3,6 +3,7 @@ import axios from "axios";
 import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import { withRouter } from "react-router-dom";
+import Banner1 from "../centennial-college.jpg";
 
 function List(props) {
   const [data, setData] = useState([]);
@@ -26,25 +27,35 @@ function List(props) {
   };
 
   return (
-    <div>
-      {showLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
-      <ListGroup>
-        {data.map((item, idx) => (
-          <ListGroup.Item
-            key={idx}
-            action
-            onClick={() => {
-              showDetail(item._id);
-            }}
-          >
-            {item.studentId}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+    <div class="container">
+      <div class="span12 div-style">
+        <div>
+          <img
+            src={Banner1}
+            alt="Centennial College Banner1"
+            class="img-style-1"
+          />
+        </div>
+        <h2 class="h2-style">List Of Students</h2>
+        {showLoading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <ListGroup>
+          {data.map((item, idx) => (
+            <ListGroup.Item
+              key={idx}
+              action
+              onClick={() => {
+                showDetail(item._id);
+              }}
+            >
+              {"Student ID:  " + item.studentId}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </div>
     </div>
   );
 }
