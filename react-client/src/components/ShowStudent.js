@@ -15,6 +15,8 @@ function ShowStudent(props) {
   const apiUrlCourse = "http://localhost:3000/api/courses";
 
 
+
+
   // courselist
 
   useEffect(() => {
@@ -62,6 +64,28 @@ function ShowStudent(props) {
       })
       .catch(error => setShowLoading(false));
   };
+
+
+  //
+  const displayCourseTable =
+
+
+    courseData.map((course) => {
+      console.log(course);
+      console.log("data" + data.studentId);
+      if (course.creator._id == data._id) {
+        return (
+          <tr>
+            <td>{course.courseCode}</td>
+            <td>{course.courseName}</td>
+            <td>{course.section}</td>
+            <td>{course.semester}</td>
+          </tr>
+        )
+
+      }
+
+    })
 
   return (
     <div>
@@ -111,17 +135,7 @@ function ShowStudent(props) {
                 <th>Semester</th>
               </tr>
             </thead>
-            {courseData.map((course) => {
-              return (
-                <tr>
-                  <td>{course.courseCode}</td>
-                  <td>{course.courseName}</td>
-                  <td>{course.section}</td>
-                  <td>{course.semester}</td>
-                </tr>
-              )
-
-            })}
+            {displayCourseTable}
           </table>
         </div>
 
