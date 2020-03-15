@@ -32,7 +32,9 @@ function ListCourses(props) {
     console.log(course.creator._id);
     if (course.creator.studentId == studentId) {
       return (
-        <tr>
+        <tr onClick={() => {
+          showDetail(course._id);
+        }}>
           <td>{course.courseCode}</td>
           <td>{course.courseName}</td>
           <td>{course.section}</td>
