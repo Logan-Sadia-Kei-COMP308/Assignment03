@@ -32,9 +32,11 @@ function ListCourses(props) {
     console.log(course.creator._id);
     if (course.creator.studentId == studentId) {
       return (
-        <tr onClick={() => {
-          showDetail(course._id);
-        }}>
+        <tr
+          onClick={() => {
+            showDetail(course._id);
+          }}
+        >
           <td>{course.courseCode}</td>
           <td>{course.courseName}</td>
           <td>{course.section}</td>
@@ -45,7 +47,7 @@ function ListCourses(props) {
   });
 
   return (
-    <div class="container">
+    <div class="container ">
       <div class="col-12 div-style">
         <h2 class="h2-style">List Of Courses</h2>
         {showLoading && (
@@ -54,7 +56,7 @@ function ListCourses(props) {
           </Spinner>
         )}
         <Jumbotron>
-          <div class="col-12 center">
+          <div class="col-12 center paddings">
             <table class="table table-striped">
               <thead class="thead-dark">
                 <tr>

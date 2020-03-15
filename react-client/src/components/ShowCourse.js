@@ -11,7 +11,6 @@ function ShowCourse(props) {
   const [data, setData] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
-  const apiUrlBase = "http://localhost:3000/api/courses";
   const [studentData, setStudentData] = useState([]);
   const [showStudentLoading, setShowStudentLoading] = useState(true);
   const apiUrlStudent = "http://localhost:3000/students";
