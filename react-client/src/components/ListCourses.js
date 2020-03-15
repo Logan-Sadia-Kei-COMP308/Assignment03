@@ -25,6 +25,52 @@ function ListCourses(props) {
     });
   };
 
+
+
+  let array = [];
+  data.map(item => {
+
+    if (!array.find(
+      course => course.courseCode === item.courseCode
+        && course.courseName === item.courseName
+        && course.section === item.section
+        && course.semester === item.semester
+    )) {
+      array.push(item);
+      return item;
+    }
+
+    // if(array.length === 0) {
+    //   array.push(item);
+    // } else {      
+    //   if(!array.find(course => course.courseCode === item.courseCode)) {
+    //   array.push(item);
+    //   }  
+    // }
+  });
+
+  const displayCourseTable =
+
+    array.map((course) => {
+
+      return (
+        <tr onClick={() => {
+          showDetail(course._id);
+        }}>
+          <td>{course.courseCode}</td>
+          <td>{course.courseName}</td>
+          <td>{course.section}</td>
+          <td>{course.semester}</td>
+        </tr>
+      )
+    })
+
+
+
+
+
+
+
   return (
     <div>
       {showLoading && (
@@ -32,19 +78,22 @@ function ListCourses(props) {
           <span className="sr-only">Loading...</span>
         </Spinner>
       )}
-      <ListGroup>
-        {data.map((item, idx) => (
-          <ListGroup.Item
-            key={idx}
-            action
-            onClick={() => {
-              showDetail(item._id);
-            }}
-          >
-            {item.courseCode}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <h3>
+        Courses for {data.firstName} {data.lastName}
+      </h3>
+      <div class="col-6 center">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Course Code</th>
+              <th>Course Name</th>
+              <th>Section</th>
+              <th>Semester</th>
+            </tr>
+          </thead>
+          {displayCourseTable}
+        </table>
+      </div>
     </div>
   );
 }
