@@ -51,7 +51,7 @@ exports.create = function (req, res) {
 exports.list = function (req, res) {
   Course.find()
     .sort("-created")
-    .populate("creator", "firstName lastName fullName")
+    .populate("creator", "firstName lastName fullName stundentId")
     .exec((err, courses) => {
       if (err) {
         return res.status(400).send({
@@ -65,7 +65,7 @@ exports.list = function (req, res) {
 //
 exports.courseByID = function (req, res, next, id) {
   Course.findById(id)
-    .populate("creator", "firstName lastName fullName")
+    .populate("creator", "firstName lastName fullName studentId")
     .exec((err, course) => {
       if (err) return next(err);
       if (!course) return next(new Error("Failed to load course " + id));
