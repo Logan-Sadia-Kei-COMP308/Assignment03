@@ -11,14 +11,26 @@ function ShowCourse(props) {
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
 
+  const [studentData, setStudentData] = useState([]);
+  const [showStudentLoading, setShowStudentLoading] = useState(true);
+  const apiUrlStudent = "http://localhost:3000/students";
+
   useEffect(() => {
     setShowLoading(false);
+    setShowStudentLoading(false);
     const fetchData = async () => {
       const result = await axios(apiUrl);
       console.log("results from courses", result.data);
 
       setData(result.data);
       setShowLoading(false);
+
+
+      const resultStudent = await axios(apiUrlStudent);
+      console.log("results from students", resultStudent.data);
+
+      setStudentData(resultStudent.data);
+      setShowStudentLoading(false);
     };
 
     fetchData();
@@ -48,6 +60,28 @@ function ShowCourse(props) {
       .catch(error => setShowLoading(false));
   };
 
+  //
+  const displayStudentTable =
+
+
+    studentData.map((student) => {
+      console.log(student);
+      console.log("data" + data.creator._id);
+      if (student._id == data.creator._id) {
+        return (
+          <tr>
+            <td>{student.firstName}</td>
+            <td>{student.lastName}</td>
+            <td>{student.program}</td>
+            <td>{student.email}</td>
+          </tr>
+        )
+
+      }
+
+    })
+
+
   return (
     <div>
       {showLoading && (
@@ -56,28 +90,11 @@ function ShowCourse(props) {
         </Spinner>
       )}
       <Jumbotron>
+
         <h1>Course Code: {data.courseCode}</h1>
         <p>Course Name: {data.courseName}</p>
         <p>Section: {data.section}</p>
         <p>Semester: {data.semester}</p>
-        <div class="col-6 center">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>Student Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tr>
-              <td>300111111</td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john_doe@gmail.com</td>
-            </tr>
-          </table>
-        </div>
         <p>
           <Button
             type="button"
@@ -99,6 +116,27 @@ function ShowCourse(props) {
             Delete
           </Button>
         </p>
+        <h3>
+          Students enrolled for {data.courseCode}
+        </h3>
+
+
+
+
+
+        <div class="col-6 center">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Program</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            {displayStudentTable}
+          </table>
+        </div>
       </Jumbotron>
     </div>
   );
