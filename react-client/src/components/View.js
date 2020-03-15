@@ -1,7 +1,10 @@
 import CreateCourse from "./CreateCourse";
+import ListCourses from "./ListCourses";
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
 //
 import axios from "axios";
+import Banner1 from "../centennial-college.jpg";
 //
 function View(props) {
   // read the info from props, coming from the ancestor component
@@ -41,30 +44,53 @@ function View(props) {
     setCourse("y");
   };
   //
-  // const listCourses = async () => {
-  //   try {
-  //     const res = await axios.get("/courses");
-  //     console.log(res.data);
-  //     setCourses(res.data);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-  //
+  const listCourses = () => {
+    console.log("in courseList");
+    setCourses("x");
+  };
+
   return (
-    <div className="App">
-      {course !== "y" ? (
-        <div>
-          <p>{screen}</p>
-          <p>{data}</p>
-          <button onClick={getData}>Get Data</button>
-          <button onClick={createCourse}>Create Course</button>
-          {/* <button onClick={listCourses}>Course list</button> */}
-          <button onClick={deleteCookie}>Log out</button>
-        </div>
-      ) : (
-        <CreateCourse screen={screen} setScreen={setScreen} />
-      )}
+    <div class="container">
+      <div class="span12 ">
+        {course !== "y" ? (
+          <div className="App">
+            <p>{screen}</p>
+            <p>{data}</p>
+            <div
+              class="btn-group margin-bottom"
+              role="group"
+              aria-label="Basic example"
+            >
+              <button onClick={getData} class="btn btn-secondary" type="button">
+                Get Data
+              </button>
+              <button
+                onClick={createCourse}
+                class="btn btn-secondary"
+                type="button"
+              >
+                Create Course
+              </button>
+              <button
+                onClick={listCourses}
+                class="btn btn-secondary"
+                type="button"
+              >
+                List Courses
+              </button>
+              <button
+                onClick={deleteCookie}
+                class="btn btn-secondary"
+                type="button"
+              >
+                Log out
+              </button>
+            </div>
+          </div>
+        ) : (
+          <CreateCourse screen={screen} setScreen={setScreen} />
+        )}
+      </div>
     </div>
   );
 }

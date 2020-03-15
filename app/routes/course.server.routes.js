@@ -1,7 +1,7 @@
 const students = require("../../app/controllers/student.server.controller");
 const courses = require("../../app/controllers/course.server.controller");
 //
-module.exports = function (app) {
+module.exports = function(app) {
   app
     .route("/api/courses")
     .get(courses.list)

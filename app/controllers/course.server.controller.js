@@ -13,7 +13,7 @@ function getErrorMessage(err) {
   }
 }
 //
-exports.create = function (req, res) {
+exports.create = function(req, res) {
   const course = new Course();
   course.courseCode = req.body.courseCode;
   course.courseName = req.body.courseName;
@@ -30,7 +30,7 @@ exports.create = function (req, res) {
     //
     req.id = student._id;
     console.log("student._id", req.id);
-  }).then(function () {
+  }).then(function() {
     course.creator = req.id;
     console.log("req.course._id", req.id);
 
@@ -48,7 +48,7 @@ exports.create = function (req, res) {
   });
 };
 //
-exports.list = function (req, res) {
+exports.list = function(req, res) {
   Course.find()
     .sort("-created")
     .populate("creator", "firstName lastName fullName stundentId")
@@ -63,7 +63,7 @@ exports.list = function (req, res) {
     });
 };
 //
-exports.courseByID = function (req, res, next, id) {
+exports.courseByID = function(req, res, next, id) {
   Course.findById(id)
     .populate("creator", "firstName lastName fullName studentId")
     .exec((err, course) => {
@@ -75,11 +75,11 @@ exports.courseByID = function (req, res, next, id) {
     });
 };
 //
-exports.read = function (req, res) {
+exports.read = function(req, res) {
   res.status(200).json(req.course);
 };
 //
-exports.update = function (req, res, next) {
+exports.update = function(req, res, next) {
   console.log("in update:", req.course);
 
   const course = req.course;
@@ -88,7 +88,7 @@ exports.update = function (req, res, next) {
   course.section = req.body.section;
   course.semester = req.body.semester;
 
-  Course.findByIdAndUpdate(course._id, course, function (err, course) {
+  Course.findByIdAndUpdate(course._id, course, function(err, course) {
     if (err) {
       console.log(err);
       return next(err);
@@ -97,7 +97,7 @@ exports.update = function (req, res, next) {
   });
 };
 //
-exports.delete = function (req, res) {
+exports.delete = function(req, res) {
   const course = req.course;
   course.remove(err => {
     if (err) {
@@ -113,7 +113,7 @@ exports.delete = function (req, res) {
 };
 //The hasAuthorization() middleware uses the req.article and req.user objects
 //to verify that the current user is the creator of the current article
-exports.hasAuthorization = function (req, res, next) {
+exports.hasAuthorization = function(req, res, next) {
   console.log("in hasAuthorization: ", req.course.creator);
   console.log("in hasAuthorization: ", req.student._id);
 

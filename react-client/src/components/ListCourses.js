@@ -28,7 +28,7 @@ function ListCourses(props) {
 
   return (
     <div class="container">
-      <div class="span12 div-style">
+      <div class="span12 div-style margin-bottom">
         <div>
           <img
             src={Banner1}
@@ -36,7 +36,7 @@ function ListCourses(props) {
             class="img-style-1"
           />
         </div>
-        <h2 class="h2-style">List Of Students</h2>
+        <h2 class="h2-style">List Of Courses</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>

@@ -4,6 +4,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
+import Banner from "../banner.png";
 
 function ShowStudent(props) {
   const [data, setData] = useState({});
@@ -13,9 +14,6 @@ function ShowStudent(props) {
   const [courseData, setCourseData] = useState([]);
   const [showCourseLoading, setShowCourseLoading] = useState(true);
   const apiUrlCourse = "http://localhost:3000/api/courses";
-
-
-
 
   // courselist
 
@@ -30,11 +28,9 @@ function ShowStudent(props) {
       const resultCourse = await axios(apiUrlCourse);
       setCourseData(resultCourse.data);
       setShowCourseLoading(false);
-
     };
 
     fetchData();
-
   }, []);
 
   const editStudent = id => {
@@ -65,81 +61,84 @@ function ShowStudent(props) {
       .catch(error => setShowLoading(false));
   };
 
-
   //
-  const displayCourseTable =
-
-
-    courseData.map((course) => {
-      console.log(course);
-      console.log("data" + data.studentId);
-      if (course.creator._id == data._id) {
-        return (
-          <tr>
-            <td>{course.courseCode}</td>
-            <td>{course.courseName}</td>
-            <td>{course.section}</td>
-            <td>{course.semester}</td>
-          </tr>
-        )
-
-      }
-
-    })
+  const displayCourseTable = courseData.map(course => {
+    console.log(course);
+    console.log("data" + data.studentId);
+    if (course.creator._id == data._id) {
+      return (
+        <tr>
+          <td>{course.courseCode}</td>
+          <td>{course.courseName}</td>
+          <td>{course.section}</td>
+          <td>{course.semester}</td>
+        </tr>
+      );
+    }
+  });
 
   return (
-    <div>
-      {showLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
-      <Jumbotron>
-        <h1>
-          Name: {data.firstName}, {data.lastName}
-        </h1>
-        <p>Email: {data.email}</p>
-        <p>Student Id: {data.studentId}</p>
-        <p>
-          <Button
-            type="button"
-            variant="primary"
-            onClick={() => {
-              editStudent(data._id);
-            }}
-          >
-            Edit
-          </Button>
-          &nbsp;
-          <Button
-            type="button"
-            variant="danger"
-            onClick={() => {
-              deleteStudent(data._id);
-            }}
-          >
-            Delete
-          </Button>
-        </p>
-
-        <h3>
-          Courses for {data.firstName} {data.lastName}
-        </h3>
-        <div class="col-6 center">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>Course Code</th>
-                <th>Course Name</th>
-                <th>Section</th>
-                <th>Semester</th>
-              </tr>
-            </thead>
-            {displayCourseTable}
-          </table>
+    <div class="container">
+      <div class="span12 div-style">
+        <div>
+          <img
+            src={Banner}
+            alt="Centennial College Banner"
+            class="img-style-2"
+          />
         </div>
+        <h2 class="h2-style">Course Detail</h2>
+        {showLoading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <Jumbotron>
+          <h1>
+            Name: {data.firstName}, {data.lastName}
+          </h1>
+          <p>Email: {data.email}</p>
+          <p>Student Id: {data.studentId}</p>
+          <p>
+            <Button
+              type="button"
+              variant="primary"
+              onClick={() => {
+                editStudent(data._id);
+              }}
+            >
+              Edit
+            </Button>
+            &nbsp;
+            <Button
+              type="button"
+              variant="danger"
+              onClick={() => {
+                deleteStudent(data._id);
+              }}
+            >
+              Delete
+            </Button>
+          </p>
 
-      </Jumbotron>
+          <h3>
+            Courses for {data.firstName} {data.lastName}
+          </h3>
+          <div class="col-12 center">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Course Code</th>
+                  <th>Course Name</th>
+                  <th>Section</th>
+                  <th>Semester</th>
+                </tr>
+              </thead>
+              {displayCourseTable}
+            </table>
+          </div>
+        </Jumbotron>
+      </div>
     </div>
   );
 }

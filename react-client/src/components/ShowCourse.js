@@ -26,7 +26,6 @@ function ShowCourse(props) {
       setData(result.data);
       setShowLoading(false);
 
-
       const resultStudent = await axios(apiUrlStudent);
       console.log("results from students", resultStudent.data);
 
@@ -62,83 +61,80 @@ function ShowCourse(props) {
   };
 
   //
-  const displayStudentTable =
-
-
-    studentData.map((student) => {
-      console.log(student);
-      console.log("data" + data.creator._id);
-      if (student._id == data.creator._id) {
-        return (
-          <tr>
-            <td>{student.firstName}</td>
-            <td>{student.lastName}</td>
-            <td>{student.program}</td>
-            <td>{student.email}</td>
-          </tr>
-        )
-
-      }
-
-    })
-
+  const displayStudentTable = studentData.map(student => {
+    console.log(student);
+    console.log("data   ---" + data.creator._id);
+    if (student._id === data.creator._id) {
+      return (
+        <tr>
+          <td>{student.firstName}</td>
+          <td>{student.lastName}</td>
+          <td>{student.program}</td>
+          <td>{student.email}</td>
+        </tr>
+      );
+    }
+  });
 
   return (
-    <div>
-      {showLoading && (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
-      <Jumbotron>
-
-        <h1>Course Code: {data.courseCode}</h1>
-        <p>Course Name: {data.courseName}</p>
-        <p>Section: {data.section}</p>
-        <p>Semester: {data.semester}</p>
-        <p>
-          <Button
-            type="button"
-            variant="primary"
-            onClick={() => {
-              editCourse(data._id);
-            }}
-          >
-            Edit
-          </Button>
-          &nbsp;
-          <Button
-            type="button"
-            variant="danger"
-            onClick={() => {
-              deleteCourse(data._id);
-            }}
-          >
-            Delete
-          </Button>
-        </p>
-        <h3>
-          Students enrolled for {data.courseCode}
-        </h3>
-
-
-
-
-
-        <div class="col-6 center">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Program</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            {displayStudentTable}
-          </table>
+    <div class="container">
+      <div class="span12 div-style">
+        <div>
+          <img
+            src={Banner}
+            alt="Centennial College Banner"
+            class="img-style-2"
+          />
         </div>
-      </Jumbotron>
+        <h2 class="h2-style">Course Detail</h2>
+        {showLoading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <Jumbotron>
+          <h1>Course Code: {data.courseCode}</h1>
+          <p>Course Name: {data.courseName}</p>
+          <p>Section: {data.section}</p>
+          <p>Semester: {data.semester}</p>
+          <p>
+            <Button
+              type="button"
+              variant="primary"
+              onClick={() => {
+                editCourse(data._id);
+              }}
+            >
+              Edit
+            </Button>
+            &nbsp;
+            <Button
+              type="button"
+              variant="danger"
+              onClick={() => {
+                deleteCourse(data._id);
+              }}
+            >
+              Delete
+            </Button>
+          </p>
+          <h3>Students enrolled for {data.courseCode}</h3>
+
+          <div class="col-12 center">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Program</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              {displayStudentTable}
+            </table>
+          </div>
+        </Jumbotron>
+      </div>
     </div>
   );
 }

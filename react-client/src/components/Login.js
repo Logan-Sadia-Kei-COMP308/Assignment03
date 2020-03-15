@@ -68,45 +68,42 @@ function App() {
           <img
             src={Banner2}
             alt="Centennial College Banner1"
-            class="img-style-2"
+            class="img-style-login"
           />
         </div>
         <h2 class="h2-style">Student Login</h2>
-        <div>
-          {screen === "auth" ? (
-            <div class="container">
-              <div class="span-12 ">
-                <div class="form-group">
-                  <label>Student Id: </label>
-                  <input
-                    type="text"
-                    onChange={e => setStudentId(e.target.value)}
-                    class="form-control"
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Password: </label>
-                  <br />
-                  <input
-                    type="password"
-                    onChange={e => setPassword(e.target.value)}
-                    class="form-control"
-                  />
-                </div>
-                <div class="form-group">
-                  <button
-                    onClick={auth}
-                    class="btn btn-outline-primary margin-bottom col-12"
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
+
+        {screen === "auth" ? (
+          <div class="container">
+            <div class="form-group">
+              <label>Student Id: </label>
+              <input
+                type="text"
+                onChange={e => setStudentId(e.target.value)}
+                class="form-control"
+              />
             </div>
-          ) : (
-            <View screen={screen} setScreen={setScreen} />
-          )}
-        </div>
+            <div class="form-group">
+              <label>Password: </label>
+              <br />
+              <input
+                type="password"
+                onChange={e => setPassword(e.target.value)}
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <button
+                onClick={auth}
+                class="btn btn-outline-primary margin-bottom col-12"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        ) : (
+          <View screen={screen} setScreen={setScreen} />
+        )}
       </div>
     </div>
   );
