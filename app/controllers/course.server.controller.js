@@ -51,7 +51,7 @@ exports.create = function(req, res) {
 exports.list = function(req, res) {
   Course.find()
     .sort("-created")
-    .populate("creator", "firstName lastName fullName stundentId")
+    .populate("creator", "firstName lastName fullName studentId")
     .exec((err, courses) => {
       if (err) {
         return res.status(400).send({
