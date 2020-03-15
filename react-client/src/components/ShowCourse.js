@@ -11,24 +11,27 @@ function ShowCourse(props) {
   const [data, setData] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
-  const apiUrlBase = "http://localhost:3000/api/courses";
+  const [courseData, setCourseData] = useState([]);
+  const [showCourseLoading, setShowCourseLoading] = useState(true);
+  const apiUrlCourse = "http://localhost:3000/api/courses";
   const [studentData, setStudentData] = useState([]);
   const [showStudentLoading, setShowStudentLoading] = useState(true);
   const apiUrlStudent = "http://localhost:3000/students";
 
   useEffect(() => {
     setShowLoading(false);
+    setShowCourseLoading(false);
     setShowStudentLoading(false);
     const fetchData = async () => {
       const result = await axios(apiUrl);
-      console.log("results from courses", result.data);
-
       setData(result.data);
       setShowLoading(false);
 
-      const resultStudent = await axios(apiUrlStudent);
-      console.log("results from students", resultStudent.data);
+      const resultCourse = await axios(apiUrlCourse);
+      setCourseData(resultCourse.data);
+      setShowCourseLoading(false);
 
+      const resultStudent = await axios(apiUrlStudent);
       setStudentData(resultStudent.data);
       setShowStudentLoading(false);
     };
@@ -43,7 +46,7 @@ function ShowCourse(props) {
   };
   const listCourse = id => {
     axios
-      .get(apiUrlBase)
+      .get(apiUrlCourse)
       .then(result => {
         setShowLoading(false);
         props.history.push("/login");
@@ -69,19 +72,33 @@ function ShowCourse(props) {
       .catch(error => setShowLoading(false));
   };
 
+  let array = [];
+  array.push(data);
+  courseData.map(item => {
+     if (array.find(
+      course => course.courseCode === item.courseCode
+        && course.courseName === item.courseName
+        && course.section === item.section
+        && course.semester === item.semester
+    )) {
+      array.push(item);
+      return item;
+    }
+  });
+
   //
   const displayStudentTable = studentData.map(student => {
-    console.log(student);
-    console.log("data   ---" + data.creator._id);
-    if (student._id === data.creator._id) {
-      return (
-        <tr>
-          <td>{student.firstName}</td>
-          <td>{student.lastName}</td>
-          <td>{student.program}</td>
-          <td>{student.email}</td>
-        </tr>
-      );
+    for (let i = 0; i < array.length; i++) {
+      if (student.studentId === array[i].creator.studentId) {
+        return (
+          <tr>
+            <td>{student.firstName}</td>
+            <td>{student.lastName}</td>
+            <td>{student.program}</td>
+            <td>{student.email}</td>
+          </tr>
+        );
+      }
     }
   });
 
@@ -114,7 +131,7 @@ function ShowCourse(props) {
                 editCourse(data._id);
               }}
             >
-              Edit
+              Edit My Course Info
             </Button>
             &nbsp;
             <Button
@@ -124,7 +141,7 @@ function ShowCourse(props) {
                 deleteCourse(data._id);
               }}
             >
-              Delete
+              Delete My Course
             </Button>
             &nbsp;
             <Button
@@ -134,7 +151,7 @@ function ShowCourse(props) {
                 listCourse();
               }}
             >
-              View All Courses
+              View All of My Courses
             </Button>
           </p>
           <h3>Students enrolled for {data.courseCode}</h3>

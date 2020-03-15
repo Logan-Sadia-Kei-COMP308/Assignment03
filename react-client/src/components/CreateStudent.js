@@ -28,14 +28,14 @@ function CreateStudent(props) {
     e.preventDefault();
     const data = {
       studentId: student.studentId,
-      firstName: student.firstName,
-      lastName: student.lastName,
+      firstName: student.firstName.toUpperCase(),
+      lastName: student.lastName.toUpperCase(),
       phoneNumber: student.phoneNumber,
-      email: student.email,
+      email: student.email.toUpperCase(),
       password: student.password,
-      program: student.program,
-      address: student.address,
-      city: student.city
+      program: student.program.toUpperCase(),
+      address: student.address.toUpperCase(),
+      city: student.city.toUpperCase()
     };
     axios
       .post(apiUrl, data)
