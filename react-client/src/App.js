@@ -21,6 +21,7 @@ import EditCourse from "./components/EditCourse";
 import CreateStudent from "./components/CreateStudent";
 import ShowStudent from "./components/ShowStudent";
 import ShowCourse from "./components/ShowCourse";
+import ShowCourseView from "./components/ShowCourseView";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -53,6 +54,7 @@ function App() {
         <Route render={() => <CreateStudent />} path="/create" />
         <Route render={() => <ShowStudent />} path="/show/:id" />
         <Route render={() => <ShowCourse />} path="/showcourse/:id" />
+        <Route render={() => <ShowCourseView />} path="/showcourseview/:id" />
       </div>
     </Router>
   );

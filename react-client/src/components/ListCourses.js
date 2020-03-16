@@ -50,13 +50,15 @@ function ListCourses(props) {
   return (
     <div className="container">
       <div className="col-12 div-style">
-        <h2 className="h2-style">List Of Courses</h2>
+        <h2 className="h2-style">List of My Courses</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
         )}
         <Jumbotron>
+          <p>You can click the table row to view the course details.</p>
+
           <div class="col-12 center paddings">
             <table class="table table-striped">
               <thead class="thead-dark">
