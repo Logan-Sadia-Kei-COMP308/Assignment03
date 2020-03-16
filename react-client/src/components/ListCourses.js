@@ -35,8 +35,9 @@ function ListCourses(props) {
         <tr
           key={idx}
           onClick={() => {
-          showDetail(course._id);
-        }}>
+            showDetail(course._id);
+          }}
+        >
           <td>{course.courseCode}</td>
           <td>{course.courseName}</td>
           <td>{course.section}</td>
@@ -56,9 +57,9 @@ function ListCourses(props) {
           </Spinner>
         )}
         <Jumbotron>
-          <div className="col-12 center">
-            <table className="table table-striped">
-              <thead className="thead-dark">
+          <div class="col-12 center paddings">
+            <table class="table table-striped">
+              <thead class="thead-dark">
                 <tr>
                   <th>Course Code</th>
                   <th>Course Name</th>
@@ -66,9 +67,7 @@ function ListCourses(props) {
                   <th>Semester</th>
                 </tr>
               </thead>
-              <tbody>
-                {displayCourseList}
-              </tbody>
+              <tbody>{displayCourseList}</tbody>
             </table>
           </div>
         </Jumbotron>

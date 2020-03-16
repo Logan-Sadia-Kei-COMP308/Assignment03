@@ -75,12 +75,15 @@ function ShowCourse(props) {
   let array = [];
   array.push(data);
   courseData.map(item => {
-     if (array.find(
-      course => course.courseCode === item.courseCode
-        && course.courseName === item.courseName
-        && course.section === item.section
-        && course.semester === item.semester
-    )) {
+    if (
+      array.find(
+        course =>
+          course.courseCode === item.courseCode &&
+          course.courseName === item.courseName &&
+          course.section === item.section &&
+          course.semester === item.semester
+      )
+    ) {
       array.push(item);
       return item;
     }
@@ -166,9 +169,7 @@ function ShowCourse(props) {
                   <th>Email</th>
                 </tr>
               </thead>
-              <tbody>
-                {displayStudentTable}
-              </tbody>
+              <tbody>{displayStudentTable}</tbody>
             </table>
           </div>
         </Jumbotron>
