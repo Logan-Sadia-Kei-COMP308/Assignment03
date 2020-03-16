@@ -24,7 +24,6 @@ import ShowCourse from "./components/ShowCourse";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
-import ListStudentsByCourse from "./components/ListStudentsByCourse";
 //
 function App() {
   return (

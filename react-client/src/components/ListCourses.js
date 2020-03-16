@@ -57,8 +57,9 @@ function ListCourses(props) {
           </Spinner>
         )}
         <Jumbotron>
-          <div class="col-12 center paddings">
-            <table class="table table-striped">
+          <div class="col-12 center paddings div-style">
+            <h5>Click on course to see course details.</h5>
+            <table class="table table-primary">
               <thead class="thead-dark">
                 <tr>
                   <th>Course Code</th>
@@ -67,7 +68,7 @@ function ListCourses(props) {
                   <th>Semester</th>
                 </tr>
               </thead>
-              <tbody>{displayCourseList}</tbody>
+              <tbody class="cursor tr">{displayCourseList}</tbody>
             </table>
           </div>
         </Jumbotron>

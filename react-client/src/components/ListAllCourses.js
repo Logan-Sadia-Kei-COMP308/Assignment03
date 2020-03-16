@@ -20,52 +20,55 @@ function ListAllCourses(props) {
 
     fetchData();
   }, []);
-  
+
   let array = [];
   data.map(item => {
-    if (!array.find(
-      course => course.courseCode === item.courseCode
-        && course.courseName === item.courseName
-        && course.section === item.section
-        && course.semester === item.semester
-    )) {
+    if (
+      !array.find(
+        course =>
+          course.courseCode === item.courseCode &&
+          course.courseName === item.courseName &&
+          course.section === item.section &&
+          course.semester === item.semester
+      )
+    ) {
       array.push(item);
       return item;
     }
   });
 
-  const displayAllCourseTable =
-    array.map((course) => {
-      return (
-        <tr>
-          <td>{course.courseCode}</td>
-          <td>{course.courseName}</td>
-          <td>{course.section}</td>
-          <td>{course.semester}</td>
-        </tr>
-      )
-    })
+  const displayAllCourseTable = array.map(course => {
+    return (
+      <tr>
+        <td>{course.courseCode}</td>
+        <td>{course.courseName}</td>
+        <td>{course.section}</td>
+        <td>{course.semester}</td>
+      </tr>
+    );
+  });
 
   return (
     <div className="container">
       <div className="col-12 div-style">
-      <div>
-        <img
-          src={Banner1}
-          alt="Centennial College Banner1"
-          className="img-style-1"
-        />
-      </div>
+        <div>
+          <img
+            src={Banner1}
+            alt="Centennial College Banner1"
+            className="img-style-1"
+          />
+        </div>
         <h2 className="h2-style">List Of Courses</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
         )}
-        <h3>
+        {/* <h3>
           Courses for {data.firstName} {data.lastName}
-        </h3>
-        <div class="col-12 center">
+        </h3> */}
+        <div class="col-12 center paddings">
+          <h5>Click on course to see course details.</h5>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
@@ -75,9 +78,7 @@ function ListAllCourses(props) {
                 <th>Semester</th>
               </tr>
             </thead>
-            <tbody>
-              {displayAllCourseTable}
-            </tbody>
+            <tbody class=" tr">{displayAllCourseTable}</tbody>
           </table>
         </div>
       </div>

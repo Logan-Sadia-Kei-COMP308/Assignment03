@@ -72,3 +72,31 @@ code {
 .paddings {
   padding: 20px;
 }
+
+.cursor {
+  cursor: pointer;
+}
+
+.tr:hover {
+  background-color: #f0f0f0;
+}
+
+tr:nth-child(even) {
+  background: #aed6f1;
+  color: #000;
+}
+
+tr:nth-child(odd) {
+  background: #5499c7;
+  color: #fff;
+}
+
+.list-bg {
+  background: #5499c7;
+  color: #fff;
+}
+
+.list-bg:hover {
+  background: #aed6f1;
+  color: #000;
+}

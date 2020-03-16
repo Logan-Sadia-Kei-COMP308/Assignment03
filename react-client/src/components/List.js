@@ -42,6 +42,7 @@ function List(props) {
             <span className="sr-only">Loading...</span>
           </Spinner>
         )}
+        <h5 class="paddings">Click on course to see course details.</h5>
         <ListGroup>
           {data.map((item, idx) => (
             <ListGroup.Item
