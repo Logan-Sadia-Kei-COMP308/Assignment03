@@ -77,9 +77,9 @@ function ListAllCourses(props) {
         {/* <h3>
           Courses for {data.firstName} {data.lastName}
         </h3> */}
-        <div class="col-12 center paddings">
+        <div class="col-12 center paddings div-style">
           <h5>Click on course to see course details.</h5>
-          <table class="table table-striped">
+          <table class="table table-primary">
             <thead class="thead-dark">
               <tr>
                 <th>Course Code</th>

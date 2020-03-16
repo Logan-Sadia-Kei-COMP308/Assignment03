@@ -124,8 +124,8 @@ function ShowStudent(props) {
           <h3>
             Courses for {data.firstName} {data.lastName}
           </h3>
-          <div className="col-12 center">
-            <table className="table table-striped">
+          <div className="col-12 center div-style">
+            <table className="table table-primary">
               <thead className="thead-dark">
                 <tr>
                   <th>Course Code</th>

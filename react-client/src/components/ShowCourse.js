@@ -159,8 +159,8 @@ function ShowCourse(props) {
           </p>
           <h3>Students enrolled for {data.courseCode}</h3>
 
-          <div className="col-12 center">
-            <table className="table table-striped">
+          <div className="col-12 center div-style">
+            <table className="table table-primary">
               <thead className="thead-dark">
                 <tr>
                   <th>First Name</th>
