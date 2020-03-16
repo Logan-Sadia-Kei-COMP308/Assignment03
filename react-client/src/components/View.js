@@ -57,7 +57,11 @@ function View(props) {
             <p>{screen}</p>
             <p>{data}</p>
             <div className="btn-group margin-bottom" role="group">
-              <button onClick={getData} className="btn btn-secondary" type="button">
+              <button
+                onClick={getData}
+                className="btn btn-secondary"
+                type="button"
+              >
                 Get Data
               </button>
               {/* <button
@@ -65,7 +69,7 @@ function View(props) {
                 class="btn btn-secondary"
                 type="button"
               >
-                Create Course
+               Students List
               </button> */}
               {/* <button
                 onClick={listCourses}
