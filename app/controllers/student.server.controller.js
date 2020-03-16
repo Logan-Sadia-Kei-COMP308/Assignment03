@@ -1,5 +1,6 @@
 // Load the module dependencies
 const Student = require("mongoose").model("Student");
+const Course = require("mongoose").model("Course");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("../../config/config");
@@ -104,6 +105,17 @@ exports.update = function(req, res, next) {
 };
 // delete a user by id
 exports.delete = function(req, res, next) {
+  var creatorToRemove = req.user.id;
+  Course.deleteMany({creator: creatorToRemove}, function(err, course) {
+    if (err) {
+      return res.status(400).send({
+        message: getErrorMessage(err)
+      });
+    } else {
+      console.log("!!!!!");
+      console.log(course);
+    }
+  });
   Student.findByIdAndRemove(req.user.id, req.body, function(err, student) {
     if (err) return next(err);
     res.json(student);

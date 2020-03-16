@@ -14,6 +14,7 @@ import "./App.css";
 //
 import List from "./components/List";
 import ListCourses from "./components/ListCourses";
+import ListAllCourses from "./components/ListAllCourses";
 import EditStudent from "./components/EditStudent";
 import EditCourse from "./components/EditCourse";
 
@@ -35,9 +36,7 @@ function App() {
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/list">List of Students</Nav.Link>
-            <Nav.Link href="/listudentsbycourse">
-              List Students by Course
-            </Nav.Link>
+            <Nav.Link href="/listallcourses">List of All Courses</Nav.Link>
             <Nav.Link href="/create">Sign Up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -47,11 +46,8 @@ function App() {
         <Route render={() => <Home />} path="/home" />
         <Route render={() => <Login />} path="/login" />
         <Route render={() => <List />} path="/list" />
-        <Route
-          render={() => <ListStudentsByCourse />}
-          path="/listudentsbycourse"
-        />
         <Route render={() => <ListCourses />} path="/listcourses" />
+        <Route render={() => <ListAllCourses />} path="/listallcourses" />
         <Route render={() => <EditStudent />} path="/edit/:id" />
         <Route render={() => <EditCourse />} path="/editCourse/:id" />
         <Route render={() => <CreateStudent />} path="/create" />
