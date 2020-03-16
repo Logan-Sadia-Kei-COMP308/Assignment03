@@ -88,7 +88,7 @@ function ListAllCourses(props) {
                 <th>Semester</th>
               </tr>
             </thead>
-            <tbody class=" tr">{displayAllCourseTable}</tbody>
+            <tbody class="cursor tr">{displayAllCourseTable}</tbody>
           </table>
         </div>
       </div>
