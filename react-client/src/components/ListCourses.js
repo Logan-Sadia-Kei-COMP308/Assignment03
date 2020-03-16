@@ -50,7 +50,7 @@ function ListCourses(props) {
   return (
     <div className="container">
       <div className="col-12 div-style">
-        <h2 className="h2-style">List Of Courses</h2>
+        <h2 className="h2-style">List of My Courses</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>

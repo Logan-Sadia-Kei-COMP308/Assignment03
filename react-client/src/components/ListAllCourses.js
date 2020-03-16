@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 import Banner1 from "../centennial-college.jpg";
 
 function ListAllCourses(props) {
-  const studentId = props.screen;
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses";
@@ -20,6 +19,12 @@ function ListAllCourses(props) {
 
     fetchData();
   }, []);
+
+  const showDetail = id => {
+    props.history.push({
+      pathname: "/showCourseView/" + id
+    });
+  };
 
   let array = [];
   data.map(item => {
@@ -37,9 +42,14 @@ function ListAllCourses(props) {
     }
   });
 
-  const displayAllCourseTable = array.map(course => {
+  const displayAllCourseTable = array.map((course, idx) => {
     return (
-      <tr>
+      <tr
+        key={idx}
+        onClick={() => {
+          showDetail(course._id);
+        }}
+      >
         <td>{course.courseCode}</td>
         <td>{course.courseName}</td>
         <td>{course.section}</td>

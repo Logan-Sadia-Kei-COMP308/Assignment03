@@ -21,6 +21,7 @@ import EditCourse from "./components/EditCourse";
 import CreateStudent from "./components/CreateStudent";
 import ShowStudent from "./components/ShowStudent";
 import ShowCourse from "./components/ShowCourse";
+import ShowCourseView from "./components/ShowCourseView";
 
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -33,7 +34,7 @@ function App() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/login">Profile</Nav.Link>
             <Nav.Link href="/list">List of Students</Nav.Link>
             <Nav.Link href="/listallcourses">List of All Courses</Nav.Link>
             <Nav.Link href="/create">Sign Up</Nav.Link>
@@ -52,6 +53,7 @@ function App() {
         <Route render={() => <CreateStudent />} path="/create" />
         <Route render={() => <ShowStudent />} path="/show/:id" />
         <Route render={() => <ShowCourse />} path="/showcourse/:id" />
+        <Route render={() => <ShowCourseView />} path="/showcourseview/:id" />
       </div>
     </Router>
   );
