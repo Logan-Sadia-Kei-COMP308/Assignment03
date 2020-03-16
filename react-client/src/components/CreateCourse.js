@@ -51,8 +51,8 @@ function CreateCourse(props) {
   };
 
   return (
-    <div class="container-fluid col-12 div-right div-style">
-      <h2 class="h2-style">
+    <div className="container-fluid col-12 div-right div-style">
+      <h2 className="h2-style">
         Create a Course <small>{studentId}</small>
       </h2>
       {showLoading && (

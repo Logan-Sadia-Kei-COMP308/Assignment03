@@ -28,11 +28,12 @@ function ListCourses(props) {
     });
   };
 
-  const displayCourseList = data.map(course => {
+  const displayCourseList = data.map((course, idx) => {
     console.log(course.creator._id);
     if (course.creator.studentId == studentId) {
       return (
         <tr
+          key={idx}
           onClick={() => {
             showDetail(course._id);
           }}
@@ -47,9 +48,9 @@ function ListCourses(props) {
   });
 
   return (
-    <div class="container ">
-      <div class="col-12 div-style">
-        <h2 class="h2-style">List Of Courses</h2>
+    <div className="container">
+      <div className="col-12 div-style">
+        <h2 className="h2-style">List Of Courses</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
@@ -66,7 +67,7 @@ function ListCourses(props) {
                   <th>Semester</th>
                 </tr>
               </thead>
-              {displayCourseList}
+              <tbody>{displayCourseList}</tbody>
             </table>
           </div>
         </Jumbotron>

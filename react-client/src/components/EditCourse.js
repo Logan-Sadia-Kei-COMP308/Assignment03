@@ -56,10 +56,10 @@ function EditCourse(props) {
   };
 
   return (
-    <div class="container ">
-      <div class="span12 div-style">
+    <div className="container ">
+      <div className="span12 div-style">
         <div>
-          <img src={Banner} alt="Centennial College Banner" class="img-style" />
+          <img src={Banner} alt="Centennial College Banner" className="img-style" />
         </div>
 
         {showLoading && (

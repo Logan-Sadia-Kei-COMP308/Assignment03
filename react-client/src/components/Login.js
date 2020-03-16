@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 //import ReactDOM from 'react-dom';
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 //
 import View from "./View";
@@ -62,40 +59,40 @@ function App() {
   }, []); //only the first render
   //
   return (
-    <div class="container-fluid bg-yellow">
-      <div class="col-12 div-style">
+    <div className="container-fluid bg-yellow">
+      <div className="col-12 div-style">
         <div>
           <img
             src={Banner2}
             alt="Centennial College Banner1"
-            class="img-style-login"
+            className="img-style-login"
           />
         </div>
-        <h2 class="h2-style">Student Login</h2>
+        <h2 className="h2-style">Student Login</h2>
 
         {screen === "auth" ? (
-          <div class="container">
-            <div class="form-group">
+          <div className="container">
+            <div className="form-group">
               <label>Student Id: </label>
               <input
                 type="text"
                 onChange={e => setStudentId(e.target.value)}
-                class="form-control"
+                className="form-control"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label>Password: </label>
               <br />
               <input
                 type="password"
                 onChange={e => setPassword(e.target.value)}
-                class="form-control"
+                className="form-control"
               />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <button
                 onClick={auth}
-                class="btn btn-outline-primary margin-bottom col-12"
+                className="btn btn-outline-primary margin-bottom col-12"
               >
                 Login
               </button>

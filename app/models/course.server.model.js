@@ -5,8 +5,7 @@ const CourseSchema = new Schema({
     type: String,
     default: "",
     trim: true,
-    required: "Course code cannot be blank",
-    unique: true
+    required: "Course code cannot be blank"
   },
   courseName: {
     type: String,
