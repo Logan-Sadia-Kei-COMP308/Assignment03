@@ -50,14 +50,14 @@ function View(props) {
   // };
 
   return (
-    <div class="container-fluid ">
-      <div class="col-12 ">
+    <div className="container-fluid ">
+      <div className="col-12 ">
         {course !== "y" ? (
           <div className="App">
             <p>{screen}</p>
             <p>{data}</p>
-            <div class="btn-group margin-bottom" role="group">
-              <button onClick={getData} class="btn btn-secondary" type="button">
+            <div className="btn-group margin-bottom" role="group">
+              <button onClick={getData} className="btn btn-secondary" type="button">
                 Get Data
               </button>
               {/* <button
@@ -76,7 +76,7 @@ function View(props) {
               </button> */}
               <button
                 onClick={deleteCookie}
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 type="button"
               >
                 Log out
@@ -87,10 +87,10 @@ function View(props) {
           <CreateCourse screen={screen} setScreen={setScreen} />
         )}
       </div>
-      <div class="div-left">
+      <div className="div-left">
         <CreateCourse screen={screen} setScreen={setScreen} />
       </div>
-      <div class="div-right">
+      <div className="div-right">
         {<ListCourses screen={screen} setScreen={setScreen} />}
       </div>
     </div>

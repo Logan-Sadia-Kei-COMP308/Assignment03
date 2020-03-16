@@ -27,16 +27,16 @@ function List(props) {
   };
 
   return (
-    <div class="container">
-      <div class="span12 div-style">
+    <div className="container">
+      <div className="span12 div-style">
         <div>
           <img
             src={Banner1}
             alt="Centennial College Banner1"
-            class="img-style-1"
+            className="img-style-1"
           />
         </div>
-        <h2 class="h2-style">List Of Students</h2>
+        <h2 className="h2-style">List Of Students</h2>
         {showLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>

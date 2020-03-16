@@ -87,11 +87,11 @@ function ShowCourse(props) {
   });
 
   //
-  const displayStudentTable = studentData.map(student => {
+  const displayStudentTable = studentData.map((student, idx) => {
     for (let i = 0; i < array.length; i++) {
       if (student.studentId === array[i].creator.studentId) {
         return (
-          <tr>
+          <tr key={idx}>
             <td>{student.firstName}</td>
             <td>{student.lastName}</td>
             <td>{student.program}</td>
@@ -103,17 +103,17 @@ function ShowCourse(props) {
   });
 
   return (
-    <div class="container">
-      <div class="span12 div-style">
+    <div className="container">
+      <div className="span12 div-style">
         <div>
           <img
             src={Banner}
             alt="Centennial College Banner"
-            class="img-style-2"
+            className="img-style-2"
           />
         </div>
-        <h2 class="h2-style">Course Detail</h2>
-        {showLoading && (
+        <h2 className="h2-style">Course Detail</h2>
+        {showLoading && showCourseLoading && showStudentLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
@@ -156,9 +156,9 @@ function ShowCourse(props) {
           </p>
           <h3>Students enrolled for {data.courseCode}</h3>
 
-          <div class="col-12 center">
-            <table class="table table-striped">
-              <thead class="thead-dark">
+          <div className="col-12 center">
+            <table className="table table-striped">
+              <thead className="thead-dark">
                 <tr>
                   <th>First Name</th>
                   <th>Last Name</th>
@@ -166,7 +166,9 @@ function ShowCourse(props) {
                   <th>Email</th>
                 </tr>
               </thead>
-              {displayStudentTable}
+              <tbody>
+                {displayStudentTable}
+              </tbody>
             </table>
           </div>
         </Jumbotron>

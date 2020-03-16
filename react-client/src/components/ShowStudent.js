@@ -62,12 +62,12 @@ function ShowStudent(props) {
   };
 
   //
-  const displayCourseTable = courseData.map(course => {
+  const displayCourseTable = courseData.map((course, idx) => {
     console.log(course);
     console.log("data" + data.studentId);
-    if (course.creator._id == data._id) {
+    if (course.creator._id === data._id) {
       return (
-        <tr>
+        <tr key={idx}>
           <td>{course.courseCode}</td>
           <td>{course.courseName}</td>
           <td>{course.section}</td>
@@ -78,17 +78,17 @@ function ShowStudent(props) {
   });
 
   return (
-    <div class="container">
-      <div class="span12 div-style">
+    <div className="container">
+      <div className="span12 div-style">
         <div>
           <img
             src={Banner}
             alt="Centennial College Banner"
-            class="img-style-2"
+            className="img-style-2"
           />
         </div>
-        <h2 class="h2-style">Course Detail</h2>
-        {showLoading && (
+        <h2 className="h2-style">Course Detail</h2>
+        {showLoading && showCourseLoading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
@@ -124,9 +124,9 @@ function ShowStudent(props) {
           <h3>
             Courses for {data.firstName} {data.lastName}
           </h3>
-          <div class="col-12 center">
-            <table class="table table-striped">
-              <thead class="thead-dark">
+          <div className="col-12 center">
+            <table className="table table-striped">
+              <thead className="thead-dark">
                 <tr>
                   <th>Course Code</th>
                   <th>Course Name</th>
@@ -134,7 +134,9 @@ function ShowStudent(props) {
                   <th>Semester</th>
                 </tr>
               </thead>
-              {displayCourseTable}
+              <tbody>
+                {displayCourseTable}
+              </tbody>
             </table>
           </div>
         </Jumbotron>
